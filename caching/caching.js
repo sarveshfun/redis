@@ -28,6 +28,12 @@ client.on("error", (err) => {
 
 
 // Close the connection when there is an interrupt sent from keyboard
+process.on('SIGINT', () => {
+    client.quit();
+    console.log('redis client quit');
+});
 
+process.on("error",()=>{
+console.log("errro")})
 
 module.exports=client
